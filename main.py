@@ -1,7 +1,7 @@
 # pip install -U openai openai-whisper sounddevice scipy numpy python-dotenv certifi
 
 from __future__ import annotations
-
+import subprocess
 import json
 import os
 import ssl
@@ -121,6 +121,17 @@ class RobotArm:
 
     def pick_up_the_green_sharperner(self) -> str:
         print("Executing robot skill: pick_up_the_green_sharperner")
+
+        result = subprocess.run(
+            "which python3",
+            shell=True,
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+
+        print(result.stdout)
+        print(result.stderr)
         return "success"
 
     def put_pen_into_glass(self) -> str:
