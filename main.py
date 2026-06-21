@@ -1,4 +1,16 @@
-#pip install -U openai-whisper==20250625
+# pip install -U openai-whisper==20250625
+from openai import OpenAI
+from typing import Any, Callable, Literal, TypedDict, cast
+import certifi
+import ssl
+import numpy as np
+from scipy.io.wavfile import write
+import sounddevice as sd
+import traceback
+import json
+import tempfile
+import sys
+import whisper
 import os
 from dotenv import load_dotenv
 
@@ -7,28 +19,11 @@ if "OPENAI_API_KEY" not in os.environ:
     raise ValueError("OPENAI_API_KEY environment variable is not set.")
 
 
-import whisper
-import sys
-import tempfile
-import json
-import traceback
-import os
-
-import sounddevice as sd
-from scipy.io.wavfile import write
-import numpy as np
-import ssl
-import certifi
-
-import json
-
-from typing import Any, Callable, Literal, TypedDict, cast
-
-#from dotenv import load_dotenv
-from openai import OpenAI
+# from dotenv import load_dotenv
 
 os.environ["PATH"] += os.pathsep + "/opt/homebrew/bin"
-ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
+ssl._create_default_https_context = lambda: ssl.create_default_context(
+    cafile=certifi.where())
 load_dotenv()
 
 print("Agent Tooling Module Started.")
@@ -91,9 +86,12 @@ VALID_TOOL_NAMES: set[str] = {
     "play_ticktack_toe",
     "refuse_invalid_input",
 }
+
+
 class SelectedToolCall(TypedDict):
     name: ToolName
     arguments: dict[str, Any]
+
 
 class RobotArm:
     def __init__(self):
@@ -121,10 +119,7 @@ class Hackathon:
         self.word_string = self.Voice2String()
         self.String2ToolCalling()
 
-
-
-
-    def call_best_tool(self,input_text: str) -> SelectedToolCall:
+    def call_best_tool(self, input_text: str) -> SelectedToolCall:
         open_ai_model = os.getenv("OPENAI_MODEL", "gpt-4o")
 
         print("call_best_tool input:", input_text)
@@ -173,7 +168,7 @@ class Hackathon:
             "arguments": arguments,
         }
 
-    def execute_tool(self,robot_arm: RobotArm, tool_call: SelectedToolCall) -> str:
+    def execute_tool(self, robot_arm: RobotArm, tool_call: SelectedToolCall) -> str:
         actions: dict[ToolName, Callable[[], str]] = {
             "put_pen_into_glass": robot_arm.put_pen_into_glass,
             "play_ticktack_toe": robot_arm.play_ticktack_toe,
@@ -206,7 +201,8 @@ class Hackathon:
                 tmp.flush()
                 tmp.close()
                 model = whisper.load_model("small")
-                result = model.transcribe(tmp.name, language="en", verbose=False)
+                result = model.transcribe(
+                    tmp.name, language="en", verbose=False)
                 segments = [
                     {"start": round(seg["start"], 2),  # type: ignore
                      "end": round(seg["end"], 2),  # type: ignore
@@ -226,20 +222,22 @@ class Hackathon:
         finally:
             import os
             if os.path.exists(tmp.name):
-                 os.unlink(tmp.name)
+                os.unlink(tmp.name)
         return output_string
 
-    def callback(self,indata, frame_count, time_info, status):
+    def callback(self, indata, frame_count, time_info, status):
         self.frames.append(indata.copy())
 
     def input_voice_raw(self):
-        stream = sd.InputStream(samplerate=self.sample_rate, channels=1, dtype="int16", callback=self.callback)
+        stream = sd.InputStream(
+            samplerate=self.sample_rate, channels=1, dtype="int16", callback=self.callback)
         with stream:
             input("Recording... press Enter to stop.\n")
 
         recording = np.concatenate(self.frames, axis=0)
         return recording
 
+
 Hackathon = Hackathon()
 
-#audio_bytes = sys.stdin.buffer.read()
+# audio_bytes = sys.stdin.buffer.read()

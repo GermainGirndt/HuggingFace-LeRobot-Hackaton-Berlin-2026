@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
     robot_arm = RobotArm()
 
-    tool_call = call_best_tool("Maybe some ticktacktoe would be good.")
+    tool_call = call_best_tool("I would like to jump rope.")
     print(f"Selected tool call: {tool_call}")
 
     result = execute_tool(robot_arm, tool_call)
