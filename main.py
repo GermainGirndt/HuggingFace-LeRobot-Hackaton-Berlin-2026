@@ -124,7 +124,7 @@ class RobotArm:
 
         print("Starting external process to control the robot arm...")
         process = subprocess.Popen(
-            "my_custom_command",
+            "lerobot-rollout --config_path=rollout_override.yaml",
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
@@ -321,5 +321,7 @@ class VoiceControlledRobotPipeline:
 
 
 if __name__ == "__main__":
-    pipeline = VoiceControlledRobotPipeline()
-    pipeline.run()
+    robot_arm = RobotArm()
+    robot_arm.pick_up_the_green_sharperner()
+    # pipeline = VoiceControlledRobotPipeline()
+    # pipeline.run()
