@@ -321,7 +321,7 @@ class VoiceControlledRobotPipeline:
 
 
 if __name__ == "__main__":
-    robot_arm = RobotArm()
+    # The function below is the only tool which has been implemented so far. You can test it by saying "Pick up the green sharperner" into your microphone.
     # robot_arm.pick_up_the_green_sharperner()
     pipeline = VoiceControlledRobotPipeline()
     pipeline.run()
