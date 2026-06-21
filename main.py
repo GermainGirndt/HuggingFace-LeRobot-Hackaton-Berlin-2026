@@ -37,6 +37,7 @@ openai_client = OpenAI()
 # ---------- Types ----------
 
 ToolName = Literal[
+    "pick_up_the_green_sharperner",
     "put_pen_into_glass",
     "play_tic_tac_toe",
     "refuse_invalid_input",
@@ -51,6 +52,18 @@ class SelectedToolCall(TypedDict):
 # ---------- Tool Definitions for OpenAI ----------
 
 ROBOT_TOOLS: list[dict[str, Any]] = [
+    {
+        "type": "function",
+        "name": "pick_up_the_green_sharperner",
+        "description": "Use when the user asks to pick up the green sharperner.",
+        "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": False,
+        },
+        "strict": True,
+    },
     {
         "type": "function",
         "name": "put_pen_into_glass",
@@ -93,6 +106,7 @@ ROBOT_TOOLS: list[dict[str, Any]] = [
 ]
 
 VALID_TOOL_NAMES: set[str] = {
+    "pick_up_the_green_sharperner",
     "put_pen_into_glass",
     "play_tic_tac_toe",
     "refuse_invalid_input",
@@ -104,6 +118,10 @@ VALID_TOOL_NAMES: set[str] = {
 class RobotArm:
     def __init__(self) -> None:
         print("Robot arm module started.")
+
+    def pick_up_the_green_sharperner(self) -> str:
+        print("Executing robot skill: pick_up_the_green_sharperner")
+        return "success"
 
     def put_pen_into_glass(self) -> str:
         print("Executing robot skill: put_pen_into_glass")
@@ -231,6 +249,7 @@ class RobotSkillExecutor:
         self.robot_arm = robot_arm
 
         self.actions: dict[ToolName, Callable[[], str]] = {
+            "pick_up_the_green_sharperner": self.robot_arm.pick_up_the_green_sharperner,
             "put_pen_into_glass": self.robot_arm.put_pen_into_glass,
             "play_tic_tac_toe": self.robot_arm.play_tic_tac_toe,
             "refuse_invalid_input": self.robot_arm.refuse_invalid_input,
