@@ -122,17 +122,30 @@ class RobotArm:
     def pick_up_the_green_sharperner(self) -> str:
         print("Executing robot skill: pick_up_the_green_sharperner")
 
-        result = subprocess.run(
-            "which python3",
+        print("Starting external process to control the robot arm...")
+        process = subprocess.Popen(
+            "my_custom_command",
             shell=True,
-            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
             text=True,
-            capture_output=True,
         )
 
-        print(result.stdout)
-        print(result.stderr)
-        return "success"
+        assert process.stdout is not None
+
+        print("Robot arm output:")
+        for line in process.stdout:
+            print(line, end="")
+
+        print("Waiting for the robot arm process to complete...")
+        return_code = process.wait()
+
+        if return_code == 0:
+            print("Robot arm skill completed successfully.")
+            return "success"
+
+        print(f"Robot arm skill failed with exit code {return_code}.")
+        return "failure"
 
     def put_pen_into_glass(self) -> str:
         print("Executing robot skill: put_pen_into_glass")
