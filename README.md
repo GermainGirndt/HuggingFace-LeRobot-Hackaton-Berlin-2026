@@ -8,6 +8,15 @@ The Jarvis project demonstrates an agentic robotics pipeline that allows users t
 
 The system captures spoken input through a microphone, converts speech into text using OpenAI Whisper, and then uses an LLM-based tool selection mechanism to determine the most appropriate robot action. The selected action is executed through a dedicated robot control interface, enabling intuitive voice-driven interaction with the Hugging Face LeRobot SO-101 platform.
 
+### Group 6 Members
+
+Salem Folz
+Germain Girndt
+Rakesh Suthar
+Johanna Girndt
+Mohsin Ali Mirza
+Saad Rasheed
+
 ## Architecture
 
 ```text
