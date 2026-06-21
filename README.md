@@ -10,12 +10,12 @@ The system captures spoken input through a microphone, converts speech into text
 
 ### Group 6 Members
 
-Salem Folz
-Germain Girndt
-Rakesh Suthar
-Johanna Girndt
-Mohsin Ali Mirza
-Saad Rasheed
+- Salem Folz
+- Germain Girndt
+- Rakesh Suthar
+- Johanna Girndt
+- Mohsin Ali Mirza
+- Saad Rasheed
 
 ## Architecture
 
