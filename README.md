@@ -2,6 +2,8 @@
 
 # Jarvis, a Voice-Controlled Agentic Robotics with LeRobot SO-101
 
+<img width="1920" height="1076" alt="title" src="https://github.com/user-attachments/assets/c5a96a09-80cf-487c-a26f-ee6e03dac92a" />
+
 The Jarvis project demonstrates an agentic robotics pipeline that allows users to control a robot arm using natural voice commands.
 
 The system captures spoken input through a microphone, converts speech into text using OpenAI Whisper, and then uses an LLM-based tool selection mechanism to determine the most appropriate robot action. The selected action is executed through a dedicated robot control interface, enabling intuitive voice-driven interaction with the Hugging Face LeRobot SO-101 platform.
