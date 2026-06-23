@@ -2,9 +2,8 @@
 
 # Jarvis, a Voice-Controlled Agentic Robotics with LeRobot SO-101
 
-<video controls width="300">
-  <source src="demo.mp4" type="video/mp4">
-</video>
+
+[Watch the demonstration in the 'demo.mp4' file](https://github.com/user-attachments/assets/e886146b-5e8b-46bf-a1ea-7fefb0af312f)
 
 The Jarvis project demonstrates an agentic robotics pipeline that allows users to control a robot arm using natural voice commands.
 
