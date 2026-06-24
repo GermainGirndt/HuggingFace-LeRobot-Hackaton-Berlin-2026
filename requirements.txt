@@ -281,7 +281,7 @@ tiktoken==0.13.0
 tokenizers==0.22.2
 toml==0.10.2
 topic-monitor==0.33.7
-torch==2.5.1+cu121
+torch==2.12.1
 torchaudio==2.5.1+cu121
 torchcodec==0.11.1
 torchvision==0.20.1+cu121
