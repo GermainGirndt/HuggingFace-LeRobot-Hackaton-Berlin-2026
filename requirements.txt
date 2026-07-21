@@ -157,7 +157,7 @@ pal-statistics-msgs==2.7.0
 pandas==2.3.3
 pcl-msgs==1.0.0
 pendulum-msgs==0.33.7
-pillow==12.2.0
+pillow==12.3.0
 propcache==0.5.2
 psutil==7.2.2
 pyarrow==24.0.0
