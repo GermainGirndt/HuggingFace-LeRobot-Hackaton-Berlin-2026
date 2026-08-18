@@ -253,7 +253,7 @@ scipy==1.18.0
 sensor-msgs==5.3.6
 sensor-msgs-py==5.3.6
 service-msgs==2.0.3
-setuptools==80.10.2
+setuptools==83.0.0
 shape-msgs==5.3.6
 shellingham==1.5.4
 six==1.17.0
