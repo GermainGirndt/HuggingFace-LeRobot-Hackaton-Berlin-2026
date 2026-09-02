@@ -287,7 +287,7 @@ torchcodec==0.11.1
 torchvision==0.20.1+cu121
 tqdm==4.68.3
 trajectory-msgs==5.3.6
-transformers==5.5.4
+transformers==5.10.1
 triton==3.1.0
 turtlesim==1.8.3
 type-description-interfaces==2.0.3
