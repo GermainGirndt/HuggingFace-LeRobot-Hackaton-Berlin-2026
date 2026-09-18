@@ -23,7 +23,7 @@ ament-xmllint==0.17.3
 angles==1.16.1
 annotated-doc==0.0.4
 annotated-types==0.7.0
-anyio==4.14.0
+anyio==4.14.2
 attrs==26.1.0
 av==15.1.0
 bond==4.1.2
